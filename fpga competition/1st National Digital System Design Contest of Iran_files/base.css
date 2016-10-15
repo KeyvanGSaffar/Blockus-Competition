@@ -1,0 +1,145 @@
+form, p {
+	margin: 0;
+}
+button {
+	border: none;
+}
+button:hover {
+	cursor: pointer;
+}
+ul {
+	list-style: none;
+}
+body {
+	background: url(../img/circuit.png) #E7E7E7;
+	direction: rtl;
+}
+body, input, textarea, select {
+	font-family: tahoma;
+}
+a {
+	color: #449C38;
+}
+a:hover {
+    color: #449C38;
+    text-decoration: underline;
+}
+textarea {
+	resize: none;
+}
+ol {
+	margin: 0 25px 9px 0;
+}
+#menu * {
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+#main {
+	width: 900px;
+	margin: 30px auto 0;
+	background: #FFF;
+	box-shadow: 0 4px 15px -3px #000;
+	border-radius: 10px 10px 0 0;
+}
+#header {
+	width: 100%;
+	height: 130px;
+	background: #207E62;
+	border-radius: 10px 10px 0 0;
+	color: #fff;
+}
+#header h1.en{
+    padding-top: 25px;
+    text-shadow: 0 1px #333;
+    text-align: left;
+    font-size: 27px;
+}
+#header h1.fa{
+    padding-top: 10px;
+    text-shadow: 0 1px #333;
+    text-align: right;
+    font-size: 30px;
+    padding-right: 23px;
+    font-family: 'B Yekan', yekan, tahoma;
+    font-weight: normal;
+}
+#header h3{
+    margin: -8px 150px;
+    font-size: 15px;
+    color: #BAE0B4;
+    text-shadow: 0 1px #333;
+}
+#sharif-logo {
+	width: 100px;
+	height: 100px;
+	background: url(../img/sharif-logo.png);
+	float: left;
+	margin: 10px 15px 10px;
+}
+#fpga-logo {
+	width: 152px;
+	height: 120px;
+	background: url(../img/fpga-logo.png);
+	float: left;
+	margin: 5px 10px 5px 20px;
+}
+#contents-o {
+	width: 75%;
+	/*background: #fff;*/
+}
+#contents {
+    padding: 15px 30px;
+}
+#sidebar {
+	width: 25%;
+	/*background: #006363;*/
+}
+#sidebar-contents-o {
+	background: url(../img/back.png) repeat-y;
+}
+#sidebar, #contents-o {
+	min-height: 700px;
+	float: right;
+}
+#menu {
+	margin: 0px;
+	padding: 20px;
+	height: 100%;
+}
+#menu .item a {
+	height: 40px;
+	font-size: 18px;
+	color: #fff;
+	display: block;
+	font-family: 'B Yekan', yekan, tahoma;
+	letter-spacing: 1px;
+}
+#menu .item:hover a, #menu .item.active a {
+	text-decoration: none;
+	padding-right: 15px;
+	color: #D5FF80;
+}
+#menu .item.active a:before {
+	content: "* ";
+}
+h2 {
+    font-family: 'B Yekan', yekan, tahoma;
+    font-weight: normal;
+    font-size: 30px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 17px;
+}
+h2.en, #page-projects h2 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+}
+p{
+    text-align: justify;
+}
+.static-content p, .static-content li {
+	line-height: 20px;
+}

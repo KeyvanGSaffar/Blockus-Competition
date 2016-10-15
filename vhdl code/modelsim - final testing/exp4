@@ -1,0 +1,627 @@
+//****************************************************Reg file module:
+`timescale 1ps / 1ps
+module RegFile(RegAddr, rd1 , clk , RegWrite ,wd );
+input[4:0] RegAddr;
+output[31:0] rd1;
+input clk;
+input[31:0] wd;
+input RegWrite;
+reg [31:0] registers[31:0];
+initial begin
+registers[0]=32'd0;
+registers[4]=32'd100;
+registers[8]=32'd100;
+end
+
+ assign rd1 = registers[RegAddr];
+
+always@ ( posedge clk ) begin
+    if (RegWrite)
+        registers[RegAddr] = wd;
+	end
+endmodule
+//****************************************************Mem file module:
+module Memfile(MemAddr, rd, clk ,Mem_read ,Mem_wrt , wdm, load );
+input[31:0] MemAddr;
+output [31:0] rd;
+input load;
+input clk;
+input[31:0] wdm;
+input Mem_read ,Mem_wrt;
+reg [7:0] memory[139:0];
+reg L;
+initial begin 
+memory[0+100]= 8'd0;
+memory[1+100]= 8'd0;
+memory[2+100]= 8'd0;
+memory[3+100]= 8'd10;
+memory[4+100]= 8'd0;   
+memory[5+100]= 8'd0;   
+memory[6+100]= 8'd0;   
+memory[7+100]= 8'd25;   
+memory[8+100]= 8'd0;
+memory[9+100]= 8'd0;
+memory[10+100]= 8'd0;
+memory[11+100]= 8'd4;
+memory[12+100]= 8'd0;  
+memory[13+100]= 8'd0;  
+memory[14+100]= 8'd0;  
+memory[15+100]= 8'd45; 
+memory[16+100]= 8'd0;
+memory[17+100]= 8'd0;
+memory[18+100]= 8'd0;
+memory[19+100]= 8'd110;
+memory[20+100]= 8'd0;
+memory[21+100]= 8'd0;
+memory[22+100]= 8'd0;
+memory[23+100]= 8'd28;
+memory[24+100]= 8'd0;
+memory[25+100]= 8'd0;
+memory[26+100]= 8'd0;
+memory[27+100]= 8'd31;
+memory[28+100]= 8'd0;
+memory[29+100]= 8'd0;
+memory[30+100]= 8'd0;
+memory[31+100]= 8'd15;
+memory[32+100]= 8'd0;
+memory[33+100]= 8'd0;
+memory[34+100]= 8'd0;
+memory[35+100]= 8'd2;
+memory[36+100]= 8'd0;
+memory[37+100]= 8'd0;
+memory[38+100]= 8'd0;
+memory[39+100]= 8'd17;
+L = 1;
+end
+assign rd = (Mem_read) ? {memory[MemAddr],memory[(MemAddr+1)],memory[(MemAddr+2)],memory[(MemAddr+3)]} : 32'd0;
+always@ ( posedge clk ) begin
+    if((load == 1) && (L==1)) begin
+    {memory[0],memory[1],memory[2],memory[3]}     = 32'b10000000000100000000000001100100;
+    {memory[4],memory[5],memory[6],memory[7]}     = 32'b10000000000010010000000000100100;
+    {memory[8],memory[9],memory[10],memory[11]}   = 32'b10000000000010100000000000100100;
+    {memory[12],memory[13],memory[14],memory[15]} = 32'b10000000000100010000001010100100;
+    {memory[16],memory[17],memory[18],memory[19]} = 32'b00000000000001000110100000100100;
+    {memory[20],memory[21],memory[22],memory[23]} = 32'b00010010000000000000000000010001;
+    {memory[24],memory[25],memory[26],memory[27]} = 32'b10000000000100000000000000100100;
+    {memory[28],memory[29],memory[30],memory[31]} = 32'b10000001001010010000000001100100;
+    {memory[32],memory[33],memory[34],memory[35]} = 32'b10000000000010100000000000100100;
+    {memory[36],memory[37],memory[38],memory[39]} = 32'b00000010001010011001000000100011;
+    {memory[40],memory[41],memory[42],memory[43]} = 32'b00010001010100100000000000001011;
+    {memory[44],memory[45],memory[46],memory[47]} = 32'b00001101000001010000000000000000;
+    {memory[48],memory[49],memory[50],memory[51]} = 32'b00001101000001100000000000000100;
+    {memory[52],memory[53],memory[54],memory[55]} = 32'b00000000110001010110000000101010;
+    {memory[56],memory[57],memory[58],memory[59]} = 32'b00010001100000000000000000000011;
+    {memory[60],memory[61],memory[62],memory[63]} = 32'b00101101000001100000000000000000;
+    {memory[64],memory[65],memory[66],memory[67]} = 32'b00101101000001010000000000000100;
+    {memory[68],memory[69],memory[70],memory[71]} = 32'b10000000000100000000000001100100;
+    {memory[72],memory[73],memory[74],memory[75]} = 32'b10000001010010100000000001100100;
+    {memory[76],memory[77],memory[78],memory[79]} = 32'b00000001010000000101100010000000;
+    {memory[80],memory[81],memory[82],memory[83]} = 32'b00000001011011010100000000100100;
+    {memory[84],memory[85],memory[86],memory[87]} = 32'b00001000000000000000000000001010;
+    {memory[88],memory[89],memory[90],memory[91]} = 32'b00000000000011010100000000100100;
+    {memory[92],memory[93],memory[94],memory[95]} = 32'b00001000000000000000000000000100;
+    {memory[96],memory[97],memory[98],memory[99]} = 32'b00001000000000000000000000011000;
+    L <= 0;
+    end 
+    else if (Mem_wrt)
+        {memory[MemAddr],memory[(MemAddr+1)],memory[(MemAddr+2)],memory[(MemAddr+3)]} = wdm;
+	end
+endmodule
+//****************************************************MEm instruction:
+//module Mem_Inst(pc,inst);
+//
+//input[31:0] pc;
+//output[31:0] inst;
+//
+//reg [7:0] Mem[95:0];
+//initial begin
+//{Mem[0],Mem[1],Mem[2],Mem[3]}     = 32'b10000000000100000000000001100100;
+//{Mem[4],Mem[5],Mem[6],Mem[7]}     = 32'b10000000000010010000000000100100;
+//{Mem[8],Mem[9],Mem[10],Mem[11]}   = 32'b10000000000010100000000000100100;
+//{Mem[12],Mem[13],Mem[14],Mem[15]} = 32'b10000000000100010000001011100100;
+//{Mem[16],Mem[17],Mem[18],Mem[19]} = 32'b00000000000001000100000000100100;
+//{Mem[20],Mem[21],Mem[22],Mem[23]} = 32'b00010010000000000000000000010001;
+//{Mem[24],Mem[25],Mem[26],Mem[27]} = 32'b10000000000100000000000000100100;
+//{Mem[28],Mem[29],Mem[30],Mem[31]} = 32'b10000001001010010000000001100100;
+//{Mem[32],Mem[33],Mem[34],Mem[35]} = 32'b10000000000010100000000000100100;
+//{Mem[36],Mem[37],Mem[38],Mem[39]} = 32'b00000010001010011001000000100011;
+//{Mem[40],Mem[41],Mem[42],Mem[43]} = 32'b00010001010100100000000000001011;
+//{Mem[44],Mem[45],Mem[46],Mem[47]} = 32'b00001101000001010000000000000000;
+//{Mem[48],Mem[49],Mem[50],Mem[51]} = 32'b00001101000001100000000000000100;
+//{Mem[52],Mem[53],Mem[54],Mem[55]} = 32'b00000000110001010110000000101010;
+//{Mem[56],Mem[57],Mem[58],Mem[59]} = 32'b00010001100000000000000000000011;
+//{Mem[60],Mem[61],Mem[62],Mem[63]} = 32'b00101101000001100000000000000000;
+//{Mem[64],Mem[65],Mem[66],Mem[67]} = 32'b00101101000001010000000000000100;
+//{Mem[68],Mem[69],Mem[70],Mem[71]} = 32'b10000000000100000000000001100100;
+//{Mem[72],Mem[73],Mem[74],Mem[75]} = 32'b10000001010010100000000001100100;
+//{Mem[76],Mem[77],Mem[78],Mem[79]} = 32'b00000001010000000101100010000000;
+//{Mem[80],Mem[81],Mem[82],Mem[83]} = 32'b00000001011000000100000000100100;
+//{Mem[84],Mem[85],Mem[86],Mem[87]} = 32'b00001000000000000000000000001010;
+//{Mem[88],Mem[89],Mem[90],Mem[91]} = 32'b00001000000000000000000000000100;
+//{Mem[92],Mem[93],Mem[94],Mem[95]} = 32'b00001000000000000000000000010111;
+//end
+//
+//assign inst= {Mem[pc], Mem[(pc+1)],Mem[(pc+2)],Mem[(pc+3)]};
+//
+//endmodule
+
+//*******************************************************ALU ctrl:
+module ALUControl(ALUOp, FuncCode, ALUCtl);
+input [1:0] ALUOp;
+input [5:0] FuncCode;
+output reg [3:0] ALUCtl;
+always @(ALUOp, FuncCode) begin
+    if ( ALUOp == 2 )
+        case (FuncCode)
+            36: ALUCtl<=2; // add
+            35: ALUCtl<=6; //subtract
+            34: ALUCtl<=0; // and
+            33: ALUCtl<=1; // or
+            39: ALUCtl<=12; // nor
+            42: ALUCtl<=7; // slt
+							0: ALUCtl<=3; //sll
+            default: ALUCtl<=15; // should not happen
+        endcase
+    else
+        case (ALUOp)
+            0:  ALUCtl<=2;
+            1: ALUCtl<=6;
+            default: ALUCtl<=15; // should not happen
+        endcase
+end
+
+endmodule
+
+//*******************************************************ALU:
+module ALU(shiftamnt, ALUCtl, A, B, ALUOut, Zero);   // shift amount as input
+input [4:0] shiftamnt;
+input [3:0] ALUCtl;
+input [31:0] A,B;
+output reg [31:0] ALUOut;
+output Zero;
+assign Zero = (ALUOut==0); //Zero is true if ALUOut is 0
+always @(ALUCtl, A, B,shiftamnt) begin //reevaluate if these change
+    case (ALUCtl)
+        0: ALUOut <= A & B;
+        1: ALUOut <= A | B;
+        2: ALUOut <= A + B;
+				 3: ALUOut <= A << shiftamnt;
+        6: ALUOut <= A - B;
+        7: ALUOut <= (A < B) ? 1:0; // ( (A < B && A[31]==B[31]) || (A[31] > B[31]) ) ? 1 : 0; //($signed(A) < $signed (B) ) ? 1:0; this is correct too!  // signed comparison
+        12: ALUOut <= ~(A | B); // result is nor     //(A < B) ) ? 1:0; unsgined comparison!
+        default: ALUOut <= 0;
+    endcase
+end
+endmodule
+//*******************************************************control Unit:
+module C_U(Opcode,clk,Reg_wrt,Mem_read,Mem_wrt,MemtoReg,ALUOp,ALUsrcA,ALUsrcB,lorD,PCSource,IRWrite,PCWrite,PCWriteCond,RegRead,load);
+input clk;
+input [5:0] Opcode;
+output reg Reg_wrt,Mem_read,Mem_wrt,MemtoReg,ALUsrcA,IRWrite,PCWrite,PCWriteCond,lorD,load; 
+output reg [1:0] ALUOp,ALUsrcB,PCSource,RegRead;
+//output reg [2:0] RegRead;
+
+reg [3:0] state,state_next;
+ 
+initial begin
+
+state= 4'd12;
+state_next = 4'd12;
+
+end
+
+always@(posedge clk)
+	begin
+		state = state_next;
+end
+
+always@(state,Opcode)
+	begin
+		state_next = state;
+		case(state)
+			4'd12 :
+			  begin
+				ALUsrcA = 1'd0;
+				lorD = 1'd0;
+				ALUsrcB = 2'd1;
+				ALUOp = 2'd0;
+				PCSource = 2'd0;
+				Mem_read = 0;
+				IRWrite = 	0;
+				PCWrite = 0;
+
+				RegRead = 2'd0;
+				PCWriteCond = 1'd0;
+				Reg_wrt = 1'd0;
+				MemtoReg = 0;
+				Mem_wrt = 1'd0;
+        load = 1;
+				state_next = 4'd0;
+				end
+
+			4'd0 :
+				begin
+				ALUsrcA = 1'd0;
+				lorD = 1'd0;
+				ALUsrcB = 2'd1;
+				ALUOp = 2'd0;
+				PCSource = 2'd0;
+				Mem_read = 1;
+				IRWrite = 	1;
+				PCWrite = 1;
+
+				RegRead = 2'd0;
+				PCWriteCond = 1'd0;
+				Reg_wrt = 1'd0;
+				MemtoReg = 1;
+				Mem_wrt = 1'd0;
+
+				state_next = 4'd1;
+				end
+
+			4'd1 :
+				begin
+				ALUsrcA = 1'd0;
+				ALUsrcB = 2'd3;
+				ALUOp = 2'd0;
+				RegRead = 2'd0;
+
+				lorD = 1'd0;
+				PCSource = 2'd0;
+				Mem_read = 1'd0;
+				IRWrite = 	1'd0;
+				PCWrite = 1'd0;
+				PCWriteCond = 1'd0;
+				Reg_wrt = 1'd0;
+				MemtoReg = 1;
+				Mem_wrt = 1'd0;
+
+				state_next = 4'd11;
+//
+//					if (Opcode == 6'd3 || Opcode == 6'd11)
+//						state_next = 4'd2;
+//					else if (Opcode == 6'd0)
+//						state_next = 4'd6;
+//					else if (Opcode == 6'd32)
+//						state_next = 4'd10;
+//					else if (Opcode == 6'd4)
+//						state_next = 4'd8;
+//					else if (Opcode == 6'd2)
+//						state_next = 4'd9;
+	//			state_next = 4'd11;
+				end
+			4'd11 :
+				begin
+				ALUsrcA = 1'd0;
+				ALUsrcB = 2'd3;
+				ALUOp = 2'd0;
+				RegRead = 2'd1;
+
+				lorD = 1'd0;
+				PCSource = 2'd0; // PCsource=4 ====> PC = PC + 4
+				Mem_read = 1'd0;
+				IRWrite = 	1'd0;
+				PCWrite = 1'd0;
+				PCWriteCond = 1'd0;
+				Reg_wrt = 1'd0;
+				MemtoReg = 1;
+				Mem_wrt = 1'd0;
+
+					if (Opcode == 6'd3 || Opcode == 6'd11)
+						state_next = 4'd2;
+					else if (Opcode == 6'd0)
+						state_next = 4'd6;
+					else if (Opcode == 6'd32)
+						state_next = 4'd10;
+					else if (Opcode == 6'd4)
+						state_next = 4'd8;
+					else if (Opcode == 6'd2)
+						state_next = 4'd9;
+				
+				end
+			4'd2 :
+				begin
+
+					ALUsrcA = 1;
+					ALUsrcB = 2'd2;
+					ALUOp = 2'd0;
+
+					RegRead = 2'd1;
+					PCWriteCond = 1'd0;
+					Reg_wrt = 1'd0;
+					MemtoReg = 1;
+					Mem_wrt = 1'd0;
+					lorD = 1'd0;
+					PCSource = 2'd0;
+					Mem_read = 1'd0;
+					IRWrite = 	1'd0;
+					PCWrite =  1'd0;
+
+						if (Opcode == 6'd3)
+							state_next = 4'd3;
+						else if(Opcode == 6'd11)
+							state_next = 4'd5;
+				end
+			4'd3 :
+				begin
+					Mem_read = 1;
+					lorD = 1;
+
+					RegRead = 2'd0;
+					ALUsrcA = 1;
+					ALUsrcB = 2'd2;
+					ALUOp = 2'd0;
+					PCWriteCond = 1'd0;
+					Reg_wrt = 1'd0;
+					MemtoReg = 1;
+					Mem_wrt = 1'd0;
+					PCSource = 2'd0;
+					IRWrite = 1'd0;
+					PCWrite = 1'd0;
+
+					state_next = 4'd4;
+				end
+			4'd4 :
+				begin
+					RegRead = 2'd1;
+					Reg_wrt = 1;
+					MemtoReg = 1;
+
+					Mem_read = 1'd0;
+					lorD = 1;
+					ALUsrcA = 1;
+					ALUsrcB = 2'd2;
+					ALUOp = 2'd0;
+					PCWriteCond = 1'd0;
+					Mem_wrt = 1'd0;
+					PCSource = 2'd0;
+					IRWrite = 	1'd0;
+					PCWrite = 1'd0;
+
+					state_next = 4'd0;
+				end
+			4'd5 :
+				begin
+					Mem_wrt = 1;
+					lorD = 1;
+
+					RegRead = 2'd1;
+					ALUsrcA = 1;
+					ALUsrcB = 2'd2;
+					ALUOp = 2'd0;
+				 	PCWriteCond = 0;
+					Reg_wrt = 0;
+					MemtoReg = 1;
+					PCSource = 2'd0;
+					Mem_read = 1'd0;
+					IRWrite = 	1'd0;
+					PCWrite = 1'd0;
+
+					state_next = 4'd0;
+				end
+			4'd6 :
+				begin
+					RegRead = 2'd1;
+					ALUsrcA = 1;
+					ALUsrcB = 2'd0;
+					ALUOp = 2'd2;
+
+
+					lorD = 1'd0;
+					PCSource = 2'd0;
+					Mem_read = 1'd0;
+					IRWrite = 	1'd0;
+					PCWrite = 1'd0;
+					PCWriteCond = 1'd0;
+					Reg_wrt = 1'd0;
+					MemtoReg = 1;
+					Mem_wrt = 1'd0;
+
+					state_next = 4'd7;
+				end
+			4'd7 :
+				begin
+					RegRead = 2'd2;
+					Reg_wrt = 1;
+					MemtoReg = 1'd0;
+
+					ALUsrcA = 1;
+					ALUsrcB = 2'd0;
+					ALUOp = 2'd2;
+					lorD = 1'd0;
+					PCSource = 2'd0;
+					Mem_read = 1'd0;
+					IRWrite = 	1'd0;
+					PCWrite = 1'd0;
+					PCWriteCond = 1'd0;
+					Mem_wrt = 1'd0;
+
+					state_next = 4'd0;
+				end
+			4'd8 :
+				begin
+					ALUsrcA = 1;
+					ALUsrcB = 2'd0;
+					ALUOp = 2'd1;
+					PCWriteCond = 1;
+					PCSource = 2'd1;
+
+					lorD = 1'd0;
+					Mem_read = 1'd0;
+					IRWrite = 	0;
+					PCWrite = 1'd0;
+					RegRead = 2'd1;
+					Reg_wrt = 1'd0;
+					MemtoReg = 1;
+					Mem_wrt = 1'd0;
+
+					state_next = 4'd0;
+				end
+			4'd9 :
+				begin
+					PCWrite = 1;
+					PCSource = 2'd2;
+
+					ALUsrcA = 1'd0;
+					ALUsrcB = 2'd3;
+					ALUOp = 2'd0;
+					lorD = 1'd0;
+					Mem_read = 1'd0;
+					IRWrite = 	0;
+					RegRead = 2'd0;
+					PCWriteCond = 1'd0;
+					Reg_wrt = 1'd0;
+					MemtoReg = 1;
+					Mem_wrt = 1'd0;
+
+					state_next = 4'd0;
+				end
+			4'd10 :
+				begin
+					ALUsrcA = 1;
+					ALUsrcB = 2'd2;
+					ALUOp = 2'd2;
+
+
+					lorD = 1'd0;
+					PCSource = 2'd0;
+					Mem_read = 1'd0;
+					IRWrite = 	1'd0;
+					PCWrite = 1'd0;
+					RegRead = 2'd0;
+					PCWriteCond = 1'd0;
+					Reg_wrt = 1'd0;
+					MemtoReg = 1;
+					Mem_wrt = 1'd0;
+
+					state_next = 4'd7;
+				end
+			default: 
+				begin
+				ALUsrcA = 0;
+				lorD = 1'd0;
+				ALUsrcB = 2'd1;
+				ALUOp = 2'd0;
+				PCSource = 2'd0;
+				Mem_read = 1;
+				IRWrite = 	1;
+				PCWrite = 1;
+
+				RegRead = 2'd0;
+				PCWriteCond = 1'd0;
+				Reg_wrt = 1'd0;
+				MemtoReg = 1;
+				Mem_wrt = 1'd0;
+
+				state_next = 4'd1;
+				end
+			endcase
+	end
+endmodule
+					
+//*********************************** PC
+module PC(clk,reset ,pcd ,PCWrite ,PCWriteCond ,  zero , pc );
+input clk,reset ;
+input[31:0] pcd ;
+input zero ;
+input PCWrite ;
+input PCWriteCond ;
+wire pcwrite ;
+output [31:0] pc ;
+reg [31:0] pc,npc ;
+
+initial begin 
+pc = 32'd0;
+end
+
+assign pcwrite = PCWrite | (PCWriteCond & zero);
+
+always@ ( pcwrite or pcd )	begin
+    if ( pcwrite ) 
+        npc <= pcd ;
+    else
+        npc <= pc;
+end
+
+always @(posedge clk , posedge reset) begin
+		if (reset) 
+				pc <= 32'd0;
+		else 
+    		pc <= npc;
+end
+endmodule
+
+//*******************************************************single cycle:
+module multi_cycle(clk,reset);
+	input clk,reset;
+	wire Reg_wrt,Mem_read,Mem_wrt,MemtoReg,ALUsrcA,IorD,IRWrite,PCWrite,PCWriteCond,load;
+	wire [1:0] ALUop,ALUsrcB,PCSource,RegRead;
+	wire [31:0] wd,rd1,rd2,ALU_B,pc,rd,ALUOut,ALU_A,pcd,MemAddr;
+	wire [4:0] RegAddr;
+	wire [3:0] ALUCtl;
+	reg [31:0] A_reg,B_reg,IR,MDR,ALUOut_reg;
+	C_U C1(IR[31:26],clk,Reg_wrt,Mem_read,Mem_wrt,MemtoReg,ALUop,ALUsrcA,ALUsrcB,IorD,PCSource,IRWrite,PCWrite,PCWriteCond,RegRead,load);
+	
+	assign RegAddr = (RegRead ==2'd0) ? IR[25:21]: ((RegRead ==2'd2) && (~ IR[31])) ? IR[15:11] : IR[20:16]; 
+	
+	assign wd = (MemtoReg) ? MDR : ALUOut_reg;
+	
+	RegFile R1(RegAddr, rd1 , clk , Reg_wrt , wd );
+	
+	ALUControl A2(ALUop, IR[5:0], ALUCtl);
+	
+	assign ALU_B = ((ALUsrcB ==2'd2)  && IR[31]) ? {{22{IR[15]}},IR[15:6]} : 
+									 (ALUsrcB == 2'd2) ? {{16{IR[15]}},IR[15:0]} : 
+									 (ALUsrcB == 2'd1) ? 32'd4 :
+									 (ALUsrcB == 2'd3)? ( ( {{16{IR[15]}},IR[15:0]} ) << 2 ) : 
+							     B_reg;
+	
+	assign ALU_A =  (ALUsrcA) ? A_reg : pc; 
+	
+	ALU A1(IR[10:6] ,ALUCtl, ALU_A ,ALU_B, ALUOut, Zero);    // shift amount = IR[10:6]
+	
+	assign pcd = (PCSource == 2'd0) ? ALUOut : (PCSource == 2'd1) ?  ALUOut_reg : ({pc[31:28],( IR[25:0] << 2 )}) ;
+	
+	PC P1(clk, reset  , pcd ,PCWrite ,PCWriteCond , Zero , pc );
+	
+	assign MemAddr = (IorD) ? ALUOut_reg : pc;
+	
+	assign rd2 = B_reg;
+	Memfile M2(MemAddr, rd, clk ,Mem_read ,Mem_wrt , rd2,load );
+	
+	always @ (posedge clk) begin
+				B_reg <= rd1;
+				A_reg <= B_reg;
+				MDR = rd;
+				ALUOut_reg <= ALUOut;
+				if(IRWrite)
+						IR <= rd;
+		end 
+
+endmodule 
+//-------------------------------------------------------------------------------------------
+
+`timescale 1ps / 1ps
+module testbench1_t;
+
+	reg clk = 0;
+	reg reset = 0;
+//------------
+//	wire [31:0] q10;
+//	wire [32:0] r10;
+//------------
+
+	multi_cycle S3(clk,reset);
+
+	
+initial repeat (6000) #1 clk = ~clk;
+
+
+
+
+
+endmodule
+
+
+
+

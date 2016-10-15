@@ -1,0 +1,12 @@
+
+State Machine - |main|uartcom:u|state_reg1
+Name state_reg1.write1 state_reg1.loaddata state_reg1.idle1 
+state_reg1.idle1 0 0 0 
+state_reg1.loaddata 0 1 1 
+state_reg1.write1 1 0 1 
+
+State Machine - |main|uartcom:u|state_reg
+Name state_reg.start1 state_reg.read1 state_reg.idle 
+state_reg.idle 0 0 0 
+state_reg.read1 0 1 1 
+state_reg.start1 1 0 1 

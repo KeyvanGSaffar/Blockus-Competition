@@ -1,0 +1,248 @@
+m255
+o
+cModel Technology
+dC:\Modeltech_5.5e\VHDL PROJECTS\project5_UART
+Ecode
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1381051001
+dD:\fpga competition\code
+FD:/fpga competition/code/code.vhd
+l0
+L53
+VF?Z^aiaz_67U[MonM]Z3I1
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Afailure
+DE work code F?Z^aiaz_67U[MonM]Z3I1
+l219
+L64
+V0M^XV^h2BdSz:JC5?NK<N2
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Atest_bench
+DE work code <WU8H8Sh1A`1kGP77<@>Q1
+l397
+L383
+VL_;2<SPz:NNUDf[m;P>]:1
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Astructure
+DE work code JTdGXB6bX9N1zEP[n1dlj0
+l20
+L16
+V;R^id273?]ZH8<3O2=Dmg2
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Edecode
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1381043328
+dD:\fpga competition\code
+FD:/fpga competition/code/decode.vhd
+l0
+L7
+Vm]_RC^e1AX>KT57KnAh=S2
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Agate_level
+DE work decode m]_RC^e1AX>KT57KnAh=S2
+l21
+L13
+Vh;f<c^1f9A>LfV[lm;kST1
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Emain
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1381042107
+dD:\fpga competition\code
+FD:/fpga competition/code/main.vhd
+l0
+L6
+V[BmSU]8A@fn:3K[Z2O6651
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Astructure
+DE work recode o2CMHaV1_SRJ`;LZ6QU=?3
+DE work code F?Z^aiaz_67U[MonM]Z3I1
+DE work opponent ?nz^Hii0[lG=L6jh4ShVC1
+DE work decode m]_RC^e1AX>KT57KnAh=S2
+DE work uartcom 5YU^JYb3L2;`f5>5Ib2GN0
+DE work main [BmSU]8A@fn:3K[Z2O6651
+l72
+L14
+VMB]7_>hmG_Dh9ZeW7zklP2
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Eopponent
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1381051001
+dD:\fpga competition\code
+FD:/fpga competition/code/code.vhd
+l0
+L5
+V?nz^Hii0[lG=L6jh4ShVC1
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Astructure
+DE work opponent ?nz^Hii0[lG=L6jh4ShVC1
+l17
+L13
+V`WJL1SR>b]Q2XCdk]6<_:1
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Atest_bench
+DE work opponent g9dO32O8YDS@K5z_mGZO93
+l113
+L99
+VZj<9=MjUd7DX_l2^SKXOb2
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Eprogram
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1380727485
+dD:\fpga competition\code
+FD:/fpga competition/code/decode.vhd
+l0
+L7
+V@M`O:[7]Gg[OUfgFncenY0
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Atest_bench
+DE work program @M`O:[7]Gg[OUfgFncenY0
+w1380730131
+l208
+L197
+VT;DFAIN`mN3iV?KMjdkW]3
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Agate_level
+DE work program @M`O:[7]Gg[OUfgFncenY0
+l21
+L13
+VUBa6[z>6X?NCQjDT@g81Q0
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Eprogram_coding
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1380727528
+dD:\fpga competition\code
+FD:/fpga competition/code/recode.vhd
+l0
+L7
+V@mGJ=Y]6U6?lgDZ1l:INj1
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Agate_level
+DE work program_coding @mGJ=Y]6U6?lgDZ1l:INj1
+l166
+L13
+V0L_9HE;g<nlX>4c2jfR6@0
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Erecode
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1381052612
+dD:\fpga competition\code
+FD:/fpga competition/code/recode.vhd
+l0
+L7
+Vo2CMHaV1_SRJ`;LZ6QU=?3
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Agate_level
+DE work recode o2CMHaV1_SRJ`;LZ6QU=?3
+l307
+L13
+VYLWoXE`j:o1OT[IPbRDGA1
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Euart
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1379495247
+dD:\fpga competition\code
+FD:/fpga competition/code/code.vhd
+l0
+L5
+VXzOoz1bC8:JmkH4S7f2L53
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Atransmitter
+DE work uart XzOoz1bC8:JmkH4S7f2L53
+l25
+L15
+V=L^>D1?KL?nnAiPB29b;H1
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T
+Euartcom
+DP ieee numeric_std JEAJIQRRkDSZF:PY1:8aa1
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+w1381041991
+dD:\fpga competition\code
+FD:/fpga competition/code/uart.vhd
+l0
+L7
+V5YU^JYb3L2;`f5>5Ib2GN0
+OE;C;5.5e;15
+o-work work -87 -explicit
+tExplicit T
+Auart
+DE work uartcom 5YU^JYb3L2;`f5>5Ib2GN0
+l40
+L19
+VbglL?acNe=c4R58KCMCb<1
+OE;C;5.5e;15
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-work work -87 -explicit
+tExplicit T

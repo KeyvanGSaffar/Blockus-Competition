@@ -1,0 +1,25 @@
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C35F672C6
+set_global_assignment -name TOP_LEVEL_ENTITY experiment2
+set_global_assignment -name LAST_QUARTUS_VERSION "9.0 SP1"
+set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
+set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name VERILOG_FILE PS2_controller.v
+set_global_assignment -name VERILOG_FILE convert_hex_to_seven_segment.v
+set_global_assignment -name VERILOG_FILE experiment2.v
+set_global_assignment -name STATE_MACHINE_PROCESSING "USER-ENCODED"
+
+
+set_location_assignment PIN_Y2 -to clk
+set_global_assignment -name FMAX_REQUIREMENT "50 MHz" -section_id clock_50MHz
+set_instance_assignment -name CLOCK_SETTINGS clock_50MHz -to clk
+
+
+set_location_assignment PIN_G12 -to rx
+set_location_assignment PIN_G9 -to tx
+
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
